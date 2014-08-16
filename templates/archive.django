@@ -1,0 +1,19 @@
+{% extends "root.django" %}
+
+{% block content %} 
+
+<div id="eyeline">
+	<a href="/"><img src="/static_media/img/header.png"/></a>	
+</div>
+
+
+{% for p in photo_list %} 
+
+	<div class="preview-item monthly">
+	<div>{{p.shown_date|date:"l d F Y" }}</div>
+	<div>{{p.content_object.title}}</div>
+	<a href="/r/{{p.content_object.title_slug}}"><img src="{{ p.content_object.get_thumbnail_url }}" /></a>	
+	</div>	
+
+{% endfor %} 
+{% endblock %} 

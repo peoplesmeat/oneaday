@@ -1,0 +1,42 @@
+{% extends "base.django" %}
+
+{% block script %}
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+  $("#checkout-button").click(function(event) {
+  	alert('checkout');
+  }); 
+});
+
+</script>
+{% endblock %}  
+
+{% block content %} 
+<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_cart"> 
+<input type="hidden" name="upload" value="1">
+<input type="hidden" name="business" value="paypal_1250959848_biz@maraudertech.com">
+
+{% for item in cart.items_array %} 
+  <input type="hidden" name="item_name_{{forloop.counter}}" value="{{item.photo.title}} {{item.size}}"> 
+  <input type="hidden" name="amount_{{forloop.counter}}" value="{{item.unit_cost}}">
+  <input type="hidden" name="quantity_{{forloop.counter}}" value="{{item.quantity}}">	
+{% endfor %}
+<table><tbody>
+{% for item in cart.items_array %} 
+	<tr><td><img src="{{item.photo.get_thumbnail_url}}"></img></td>
+	<td>{{item.quantity}}</td>
+	<td>{{item.size}}</td>
+	<td>{{item.cost}}</td>
+	</tr>
+{% endfor %} 
+</tbody></table>
+
+<input id="checkout-button" type="image" name="submit" border="0" src="https://www.paypal.com/en_US/i/btn/btn_buynow_LG.gif" alt="PayPal - The safer, easier way to pay online"> <img alt="" border="0" width="1" height="1" src="https://www.paypal.com/en_US/i/scr/pixel.gif" >
+
+</form>
+
+{% endblock %} 
+

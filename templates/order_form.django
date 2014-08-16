@@ -1,0 +1,42 @@
+<div id="popupContact">  
+	<a id="popupContactClose">x</a>  
+	<h1>Order Prints of this Photo!</h1>  
+	<img src="{{curr_image.get_thumbnail_url}}"></img>
+	<form>		
+		<table><tbody>
+		<tr>
+			<td>Quantity</td>
+			<td>Size</td>
+			<td>Price</td>
+		</tr>
+		<tr>
+			<td>{{order_form.p4x6}}</td>
+			<td>{{order_form.p4x6.label}}</td>
+			<td>$0.20</td>
+		</tr>
+		<tr>
+			<td>{{order_form.p5x7}}</td>
+			<td>{{order_form.p5x7.label}}</td>
+			<td>$0.50</td>
+		</tr>
+		<tr>
+			<td>{{order_form.p8x10}}</td>
+			<td>{{order_form.p8x10.label}}</td>
+			<td>$1.50</td>
+		</tr>
+		<tr>
+			<td>{{order_form.p11x13}}</td>
+			<td>{{order_form.p11x13.label}}</td>
+			<td>$8.00</td>
+		</tr>
+		<tr class="totalRow">
+			<td></td>
+			<td>Total</td>
+			<td id="totalPrice">$0.00</td>
+		</tr>						
+		</tbody></table>
+		{{order_form.photoId}}
+		<a id="addToCart" href=""> add to cart</a>
+	</form> 
+</div> 
+<div id="backgroundPopup"></div> 
